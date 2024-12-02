@@ -6,6 +6,10 @@ This repo is a consolidated example.
 
 # Hardware
 
+## Adafruit MatrixPortal M4
+I'm still using the original MatrixPortal (25,90€):
+- https://www.berrybase.de/adafruit-matrix-portal-circuitpython-powered-internet-display
+
 ## RGB LED matrix 64x32
 The display (23,95€) is from WaveShare (and was much cheaper than the similar product from Adafruit):
 - https://www.waveshare.com/wiki/RGB-Matrix-P4-64x32
