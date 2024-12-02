@@ -49,32 +49,15 @@ DEBUG = False
 BLINK = bool(settings["BLINK"])
 NTP_INTERVAL = int(settings["NTP_INTERVAL"])
 CIRCUITPY_WIFI_SSID = settings["CIRCUITPY_WIFI_SSID"]
-CIRCUITPY_WIFI_PASSWORD = settings["CIRCUITPY_WIFI_PASSWORD"]
 
 ##------------------------------------------------------------------------------
 ## Network Setup
 ##------------------------------------------------------------------------------
 
-## If you are using a board with pre-defined ESP32 Pins:
+## Board with pre-defined ESP32 Pins
 esp32_cs = DigitalInOut(board.ESP_CS)
 esp32_ready = DigitalInOut(board.ESP_BUSY)
 esp32_reset = DigitalInOut(board.ESP_RESET)
-
-## If you have an AirLift Shield:
-# esp32_cs = DigitalInOut(board.D10)
-# esp32_ready = DigitalInOut(board.D7)
-# esp32_reset = DigitalInOut(board.D5)
-
-## If you have an AirLift Featherwing or ItsyBitsy Airlift:
-# esp32_cs = DigitalInOut(board.D13)
-# esp32_ready = DigitalInOut(board.D11)
-# esp32_reset = DigitalInOut(board.D12)
-
-## If you have an externally connected ESP32:
-# NOTE: You may need to change the pins to reflect your wiring
-# esp32_cs = DigitalInOut(board.D9)
-# esp32_ready = DigitalInOut(board.D10)
-# esp32_reset = DigitalInOut(board.D5)
 
 ## Secondary (SCK1) SPI used to connect to WiFi board on Arduino Nano Connect RP2040
 if "SCK1" in dir(board):
@@ -266,7 +249,7 @@ def update_time(*, hours=None, minutes=None, show_colon=False):
     """
     Update the clock label with the current time."""
     # now = time.localtime()
-    now = cettime()
+    now = cettime(time.time())
     if hours is None:
         hours = now[3]
     if hours >= 20 or hours < 7:
@@ -295,7 +278,7 @@ def update_time(*, hours=None, minutes=None, show_colon=False):
         colon = ":"
 
     time_str_display = "{:d}{}{:02d}".format(hours, colon, minutes)
-    time_str_stdout = time_str_display + ":{:02d}".format(seconds)
+    time_str_stdout = "{}:{:02d}".format(time_str_display, seconds)
     clock_label.text = time_str_display
     bbx, bby, bbwidth, bbh = clock_label.bounding_box
 
