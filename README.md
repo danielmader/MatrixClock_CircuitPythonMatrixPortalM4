@@ -26,5 +26,5 @@ The sensor (7.95€) came on a convenient break-out board from Adafruit:
 
 # Dependencies
 
-- [CircuitPython for the MatrixPortal M4](https://circuitpython.org/board/matrixportal_m4/)
+- [CircuitPython](https://circuitpython.org/board/matrixportal_m4/) for the MatrixPortal M4
 - [Circup](https://pypi.org/project/circup/) to install the dependencies
