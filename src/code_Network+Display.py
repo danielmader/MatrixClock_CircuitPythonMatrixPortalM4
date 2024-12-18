@@ -9,6 +9,7 @@ https://learn.adafruit.com/adafruit-matrixportal-m4?view=all
 https://learn.adafruit.com/weather-display-matrix?view=all
 https://learn.adafruit.com/network-connected-metro-rgb-matrix-clock?view=all
 https://learn.adafruit.com/moon-phase-clock-for-adafruit-matrixportal?view=all
+https://learn.adafruit.com/rgb-led-matrices-matrix-panels-with-circuitpython?view=all
 
 https://adafruit-playground.com/u/VPTechOps/pages/rgb-matrix-word-clocks
 """
@@ -234,15 +235,13 @@ print("\n**************************************")
 print(  "**** Display Setup #2 w/ Matrix() ****")
 print(  "**************************************")
 
-## https://learn.adafruit.com/rgb-led-matrices-matrix-panels-with-circuitpython/matrixportal
-
 matrix = Matrix(
     # width=64, height=32,
     # rotation=180,
     )
 time.sleep(1)  # show the Adafruit logo for 1 second
-
 display = matrix.display
+
 text = "Hello\nred!"
 text_area = label.Label(terminalio.FONT, text=text, color=0x440000)
 text_area.x = 1
@@ -250,7 +249,6 @@ text_area.y = 8
 display.root_group = text_area
 time.sleep(1)  # show the text for 1 second
 
-display = matrix.display
 text = "Hello\ngreen!"
 text_area = label.Label(terminalio.FONT, text=text, color=0x004400)
 text_area.x = 28
@@ -268,10 +266,9 @@ matrix = Matrix(
     # width=64, height=32,
     # rotation=180,
     )
+time.sleep(1)  # show the Adafruit logo for 1 second
 display = matrix.display
 
-## Create a Group
-group = displayio.Group()
 ## Create a color palette
 color = displayio.Palette(5)
 color[0] = 0x000000  # black background
@@ -286,18 +283,22 @@ bitmap = displayio.Bitmap(64, 32, 5)
 for i in range(64):
     for j in range(32):
         bitmap[i, j] = 0
-## Draw a blueish line in the middle
+
+## Draw a blueish crosshair in the middle
 for i in range(64):
     bitmap[i, 15] = 4
+for j in range(32):
+    bitmap[32, j] = 4
 
+## Create a Group
+group = displayio.Group()
 ## Create a TileGrid using the Bitmap and Palette
 tile_grid = displayio.TileGrid(bitmap, pixel_shader=color)
-
 ## Add the TileGrid to the Group
 group.append(tile_grid)
 display.root_group = group
-
 time.sleep(2)  # show the blueish line for 1 second
+
 
 ##==============================================================================
 print("\n***********************")
@@ -307,7 +308,7 @@ print(  "***********************")
 network = Network(esp=esp, debug=True)
 network.connect()
 
-## https://learn.adafruit.com/network-connected-metro-rgb-matrix-clock/custom-font
+## Define fonts
 # font_large = bitmap_font.load_font("IBMPlexMono-Medium-24_jep.bdf")
 # font_small = terminalio.FONT
 # font_small = bitmap_font.load_font("helvR10.bdf")
