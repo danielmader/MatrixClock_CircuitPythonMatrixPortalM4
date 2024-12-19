@@ -8,3 +8,4 @@ adafruit_display_text
 adafruit_bitmap_font
 adafruit_imageload
 # adafruit_debouncer
+aysncio

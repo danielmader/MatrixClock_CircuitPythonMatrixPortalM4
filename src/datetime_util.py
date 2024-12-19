@@ -4,7 +4,7 @@
 Useful clock related functions.
 
 @author: mada
-@version: 2024-12-02
+@version: 2024-12-19
 """
 
 import time
@@ -14,7 +14,7 @@ import time
 
 
 ##=============================================================================
-def _daylightSavingOffset(ts_utc=time.time()):
+def daylightSavingOffset(ts_utc=time.time()):
     '''
     https://forum.micropython.org/viewtopic.php?f=2&t=4034
 
@@ -57,7 +57,7 @@ def cettime(ts_utc=time.time()):
     ts_cet : float
         timestamp for CET
     '''
-    offset = _daylightSavingOffset(ts_utc)
+    offset = daylightSavingOffset(ts_utc)
     ts_cet = time.localtime(ts_utc + offset)
 
     return ts_cet

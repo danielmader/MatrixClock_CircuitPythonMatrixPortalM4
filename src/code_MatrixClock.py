@@ -11,6 +11,7 @@ MatrixClock - a HUB75 LED matrix clock driven by Adafruit's MaxtrixPortal M4.
 import sys
 import os
 import time
+import asyncio
 
 ## Network ---------------------------------------------------------------------
 import board
@@ -36,7 +37,7 @@ import displayio
 import terminalio
 
 ## Clock -----------------------------------------------------------------------
-from datetime_util import cettime
+import datetime_util
 
 
 ##******************************************************************************
@@ -50,7 +51,7 @@ BLINK = True
 ## NTP sync interval
 NTP_INTERVAL = 3600 * 12  # 3600s = 60min = 1h
 ## Last NTP sync
-ts_lastntpsync = 0
+ts_lastntpsync = None
 ## Clock counter
 if DEBUG:
     ## Start at 05:59:00 UTC = 06:59:00 CET ...
@@ -203,7 +204,7 @@ while not i2c_bus.try_lock():
 try:
     i2c_devices = i2c_bus.scan()
     print("\n## I2C device addresses found:")
-    print([(device_address, hex(device_address)) for device_address in i2c_devices])
+    print(">", [(device_address, hex(device_address)) for device_address in i2c_devices])
 finally:
     i2c_bus.unlock()
 
@@ -271,15 +272,17 @@ print(  "**** Matrix Clock ****")
 print(  "**********************")
 
 ## Define fonts
-font_large = bitmap_font.load_font("IBMPlexMono-Medium-24_jep.bdf")
+font_large_day = bitmap_font.load_font("IBMPlexMono-Medium-24_jep.bdf")
+font_large_night = terminalio.FONT
 # font_small = terminalio.FONT
-# font_small = bitmap_font.load_font("6x10.bdf")
+# font_small = bitmap_font.load_font("6x10.bdf")  # ugly
 font_small = bitmap_font.load_font("helvR10.bdf")
 
 ## Create labels for the display text
-clock_label = Label(font_large)
+clock_label = Label(font_large_day)
 sensor_label = Label(font_small)
-
+clock_label.color = color[4]
+sensor_label.color = color[4]
 ## Place the labels
 clock_label.y = display.height // 3
 sensor_label.y = 26
@@ -293,45 +296,62 @@ group.append(sensor_label)
 
 
 ##------------------------------------------------------------------------------
-def update_time(*, hours=None, minutes=None, show_colon=False):
+def update_display(*, hours=None, minutes=None, show_colon=False):
     """
-    Update the clock label with the current time."""
-    # now = time.localtime()
-    now = cettime(time.time())
+    Update the clock display with the current time and sensor readings."""
+    # now_localtime = time.localtime()  # UTC
+
+    now_monotonic = time.monotonic()
+    now_time = time.time()
+    now_tick = ts_clocktick
+    now_ntp = ntp.datetime
+    now_rtc = rtc.datetime
+    print(f"## Monotonic: {now_monotonic}")
+    print(f"## Time:      {now_time}")
+    print(f"## Tick:      {now_tick}")
+    print(f"## UTC @ Tick: {time.localtime(now_tick)}")
+    print(f"## UTC @ RTC:  {now_rtc}")
+    print(f"## UTC @ NTP:  {now_ntp}")
+
+    #now = datetime_util.cettime(time.time())  # CET/CEST
+    offset = datetime_util.daylightSavingOffset(now_time)  # TZ offset in seconds (CET/CEST)
+    now = time.localtime(time.mktime(now_ntp) + offset)  # CET/CEST
+
     if hours is None:
         hours = now[3]
+    if minutes is None:
+        minutes = now[4]
+    seconds = now[5]
+
     if hours >= 20 or hours < 7:
         ## Evening hours to morning
+        clock_label.font = font_large_night
         clock_label.color = color[1]
         sensor_label.color = color[1]
     else:
         ## Daylight hours
+        clock_label.font = font_large_day
         clock_label.color = color[3]
         sensor_label.color = color[3]
-
-    if minutes is None:
-        minutes = now[4]
-
-    seconds = now[5]
 
     if BLINK:
         colon = ":" if show_colon or seconds % 2 else " "
     else:
         colon = ":"
 
+    ## Format the time string --------------------------------------------------
     time_str_display = "{:d}{}{:02d}".format(hours, colon, minutes)
     time_str_stdout = "{}:{:02d}".format(time_str_display, seconds)
     clock_label.text = time_str_display
     bbx, bby, bbwidth, bbh = clock_label.bounding_box
 
-    ## Place the label
     clock_label.x = round(display.width / 2 - bbwidth / 2)  # centered
     clock_label.y = display.height // 3
     if DEBUG:
         print("## clock_label bounding box: {},{},{},{}".format(bbx, bby, bbwidth, bbh))
         print("## clock_label x: {} y: {}".format(clock_label.x, clock_label.y))
 
-    ## Read temperature and humidity
+    ## Format the sensor string ------------------------------------------------
     t_degC, rh_pRH = read_sensor()
     sensor_str = "{:.1f}°  {:.1f}%".format(t_degC, rh_pRH)
     sensor_label.text = sensor_str
@@ -342,20 +362,69 @@ def update_time(*, hours=None, minutes=None, show_colon=False):
         print("## sensor_label bounding box: {},{},{},{}".format(bbx, bby, bbwidth, bbh))
         print("## sensor_label x: {} y: {}".format(sensor_label.x, sensor_label.y))
 
-    print("Tick: {} - {}".format(time_str_stdout, sensor_str))
+
+##------------------------------------------------------------------------------
+async def _clocktick(lock):
+    """
+    Scheduler to add one second to the counter.
+    """
+    global ts_clocktick
+    while True:
+        # await lock.acquire()
+        ts_clocktick += 1
+        # lock.release()
+        await asyncio.sleep(1)
 
 
-##******************************************************************************
-##******************************************************************************
-update_time(show_colon=True)  # display whatever time is on the board
-while True:
+##==============================================================================
+def clocktick():
+    """
+    Synchronize the RTC with NTP time.
+    """
+    global ts_lastntpsync
+    global ts_clocktick
+
+    ## Check if NTP is due
     if ts_lastntpsync is None or time.monotonic() > ts_lastntpsync + NTP_INTERVAL:
         print(">> Updating time via NTP...")
         try:
-            update_time(show_colon=True)  # make sure a colon is displayed while updating
+            update_display(show_colon=True)  # make sure a colon is displayed while updating
             rtc.datetime = ntp.datetime
             ts_lastntpsync = time.monotonic()
+            ts_clocktick = time.mktime(ntp.datetime)
         except RuntimeError as e:
             print("!! Some error occured, retrying! -", e)
-    update_time()
-    time.sleep(1)
+    ## Update the time display
+    update_display()
+
+
+##******************************************************************************
+##******************************************************************************
+
+update_display(show_colon=True)  # display whatever time is on the board
+
+## 1) Run clock in a loop
+# while True:
+#     clocktick()
+#     time.sleep(1)
+## 2) Run clock in a routine
+async def main():
+    ## Create the lock instance
+    lock = asyncio.Lock()
+
+    ## Init co-routines (cooperative tasks) for basic clock function
+    asyncio.create_task(_clocktick(lock))
+    # asyncio.create_task(_update_clock(lock))
+    # asyncio.create_task(_sync_time_NTP(lock, ntp))
+
+    while True:
+        clocktick()
+        await asyncio.sleep(1)
+
+try:
+    asyncio.run(main())
+finally:
+    ## Clear retained state
+    _ = asyncio.new_event_loop()
+
+print("\n#### All done!")
