@@ -1,0 +1,662 @@
+Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
+code.py output:
+
+****************************
+**** Settings & Secrets ****
+****************************
+
+***********************
+**** Network Setup ****
+***********************
+## ESP32 found and in idle mode
+## Firmware vers. 1.7.7
+## MAC addr: D8:18:8C:0A:8A:B4
+## IP addr: 0.0.0.0
+>> Connecting...
+## Connected to KapWegNet       RSSI: -84       IP addr: 192.168.0.98
+
+*******************
+**** NTP & RTC ****
+*******************
+## Current NTP time: struct_time(tm_year=2025, tm_mon=1, tm_mday=20, tm_hour=19, tm_min=36, tm_sec=37, tm_wday=0, tm_yday=20, tm_isdst=-1)
+## Current RTC time: struct_time(tm_year=2025, tm_mon=1, tm_mday=20, tm_hour=19, tm_min=36, tm_sec=37, tm_wday=0, tm_yday=20, tm_isdst=-1)
+
+## CET @ Time: ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('19:36:31', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('19:36:37', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('19:36:31', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('19:36:37', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('19:36:37', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('19:36:37', 'Mon, 20 Jan 2025')
+
+[...]
+
+# CET @ Time: ('20:04:28', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:28', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:04:28', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:04:29', 'Mon, 20 Jan 2025')
+
+## CET @ Time: ('20:04:29', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:29', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:04:29', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:04:30', 'Mon, 20 Jan 2025')
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:04:30', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:30', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:04:30', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:04:30', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:04:41', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:31', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:04:41', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:04:41', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:05:11', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:31', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:05:11', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:05:11', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('20:05:22', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:04:32', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:05:22', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:05:23', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:05:23', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:05:23', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:05:23', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:05:23', 'Mon, 20 Jan 2025')
+
+[...]
+
+## CET @ Time: ('20:10:40', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:10:40', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:10:40', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:10:40', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:10:41', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:10:41', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:10:41', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:10:41', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:11:11', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:10:41', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:11:11', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:11:11', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('20:11:22', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:10:42', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:11:22', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:11:23', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:11:23', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:11:23', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:11:23', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:11:23', 'Mon, 20 Jan 2025')
+
+[...]
+
+## CET @ Time: ('20:13:13', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:13', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:13:13', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:13:13', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:13:14', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:14', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:13:14', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:13:14', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:13:44', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:14', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:13:44', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:13:44', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:13:55', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:15', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:13:55', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:13:55', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:14:25', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:15', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:14:25', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:14:25', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:14:36', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:16', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:14:36', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:14:36', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:15:06', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:16', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:15:06', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:15:06', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:15:17', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:17', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:15:17', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:15:17', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+
+## CET @ Time: ('20:15:47', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:17', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:15:47', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:15:48', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('20:15:48', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:13:18', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:15:48', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:15:49', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:15:49', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:15:49', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:15:49', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:15:49', 'Mon, 20 Jan 2025')
+
+[...]
+
+## CET @ Time: ('20:17:44', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:43', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:17:44', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:17:43', 'Mon, 20 Jan 2025')
+
+## CET @ Time: ('20:17:45', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:44', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:17:45', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:17:44', 'Mon, 20 Jan 2025')
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:17:46', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:45', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:17:46', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:17:46', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:17:57', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:46', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:17:57', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:17:57', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+
+## CET @ Time: ('20:18:27', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:46', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:27', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:27', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('20:18:28', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:17:47', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:28', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:28', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:18:28', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:28', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:28', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:28', 'Mon, 20 Jan 2025')
+
+[...]
+
+## CET @ Time: ('20:18:50', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:50', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:50', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:50', 'Mon, 20 Jan 2025')
+
+## CET @ Time: ('20:18:51', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:51', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:51', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:51', 'Mon, 20 Jan 2025')
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:18:52', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:52', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:18:52', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:18:52', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:19:03', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:53', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:19:03', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:19:03', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:19:33', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:53', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:19:33', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:19:33', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:19:44', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:54', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:19:44', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:19:44', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:20:14', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:54', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:20:14', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:20:14', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:20:25', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:55', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:20:25', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:20:25', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:20:55', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:55', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:20:55', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:20:55', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:21:06', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:56', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:21:06', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:21:06', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:21:36', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:56', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:21:36', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:21:36', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+
+## CET @ Time: ('20:21:47', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:18:57', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:21:47', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:21:48', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:21:48', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:21:48', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:21:48', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:21:48', 'Mon, 20 Jan 2025')
+
+[...]
+
+## CET @ Time: ('20:22:39', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:38', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:22:39', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:22:38', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:22:40', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:39', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:22:40', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:22:40', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:23:10', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:39', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:23:10', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:23:10', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:23:21', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:40', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:23:21', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:23:21', 'Mon, 20 Jan 2025')
+!! Error syncing time: [Errno 116] ETIMEDOUT. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:23:51', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:40', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:23:51', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:23:51', 'Mon, 20 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: [Errno 116] ETIMEDOUT
+
+## CET @ Time: ('20:24:02', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:22:41', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:24:02', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:24:02', 'Mon, 20 Jan 2025')
+<< Time synchronized successfully.
+
+## CET @ Time: ('20:24:11', 'Mon, 20 Jan 2025')
+## CET @ Tick: ('20:24:11', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('20:24:11', 'Mon, 20 Jan 2025')
+## CET @ NTP:  ('20:24:11', 'Mon, 20 Jan 2025')
+
+[...]
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:22', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:10', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:22', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:22', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:23', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:11', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:23', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:23', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:44', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:12', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:44', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:44', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:45', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:13', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:45', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:45', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:55', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:13', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:55', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:55', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:24:56', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:14', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:24:56', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:24:56', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:06', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:14', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:06', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:06', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:07', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:15', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:07', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:07', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:17', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:15', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:17', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:17', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:18', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:16', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:18', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:18', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:28', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:16', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:28', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:28', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:29', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:17', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:29', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:29', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:39', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:17', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:39', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:39', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:40', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:18', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:40', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:40', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:50', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:18', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:50', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:50', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:25:51', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:19', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:25:51', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:25:51', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:01', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:19', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:01', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:01', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:02', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:20', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:02', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:02', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:12', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:20', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:12', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:12', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:13', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:21', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:13', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:13', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:23', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:21', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:23', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:23', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:24', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:22', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:24', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:24', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:34', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:22', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:34', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:34', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:35', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:23', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:35', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:35', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:45', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:23', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:45', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:45', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:46', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:24', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:46', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:46', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:56', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:24', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:56', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:56', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:26:57', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:25', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:26:57', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:26:57', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:07', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:25', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:07', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:07', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:08', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:26', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:08', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:08', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:18', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:26', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:18', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:18', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:19', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:27', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:19', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:19', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:29', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:27', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:29', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:29', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:30', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:28', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:30', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:30', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:40', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:28', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:40', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:40', 'Tue, 21 Jan 2025')
+
+>> Syncing time via NTP...
+!! OSError while fetching ntp.datetime: Failed to send UDP data
+
+## CET @ Time: ('08:27:41', 'Tue, 21 Jan 2025')
+## CET @ Tick: ('22:08:29', 'Mon, 20 Jan 2025')
+## CET @ RTC:  ('08:27:41', 'Tue, 21 Jan 2025')
+## CET @ NTP:  ('08:27:41', 'Tue, 21 Jan 2025')
+!! Error syncing time: Failed to send UDP data. Retrying in 10 seconds.
+

@@ -1,0 +1,41 @@
+[...]
+
+## UTC @ Time: ('12:09:15', 'Sat, 11 Jan 2025')
+## UTC @ Tick: ('12:09:14', 'Sat, 11 Jan 2025')
+## UTC @ RTC:  ('12:09:15', 'Sat, 11 Jan 2025')
+## UTC @ NTP:  ('12:09:15', 'Sat, 11 Jan 2025')
+
+## UTC @ Time: ('12:09:16', 'Sat, 11 Jan 2025')
+## UTC @ Tick: ('12:09:15', 'Sat, 11 Jan 2025')
+## UTC @ RTC:  ('12:09:16', 'Sat, 11 Jan 2025')
+## UTC @ NTP:  ('12:09:16', 'Sat, 11 Jan 2025')
+
+## UTC @ Time: ('12:09:17', 'Sat, 11 Jan 2025')
+## UTC @ Tick: ('12:09:16', 'Sat, 11 Jan 2025')
+## UTC @ RTC:  ('12:09:17', 'Sat, 11 Jan 2025')
+## UTC @ NTP:  ('12:09:17', 'Sat, 11 Jan 2025')
+
+## UTC @ Time: ('12:09:18', 'Sat, 11 Jan 2025')
+## UTC @ Tick: ('12:09:17', 'Sat, 11 Jan 2025')
+## UTC @ RTC:  ('12:09:18', 'Sat, 11 Jan 2025')
+## UTC @ NTP:  ('12:09:18', 'Sat, 11 Jan 2025')
+
+>> Updating time via NTP...
+Traceback (most recent call last):
+  File "code.py", line 215, in <module>
+  File "asyncio/core.py", line 317, in run
+  File "asyncio/core.py", line 276, in run_until_complete
+  File "asyncio/core.py", line 261, in run_until_complete
+  File "code.py", line 208, in main
+  File "code.py", line 179, in clocktick
+  File "code.py", line 139, in update_display
+  File "adafruit_ntp.py", line 127, in datetime
+  File "adafruit_ntp.py", line 93, in _update_time_sync
+  File "adafruit_esp32spi/adafruit_esp32spi_socketpool.py", line 185, in recv_into
+OSError: [Errno 116] ETIMEDOUT
+
+Code done running.
+Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
+
+Press any key to enter the REPL. Use CTRL-D to reload.
+
