@@ -7,22 +7,6 @@ MatrixClock - a HUB75 LED matrix clock driven by Adafruit MaxtrixPortal M4.
 @version: 2024-09-20
 """
 
-'''
-Modules supported by Adafruit Matrix Portal M4
-https://docs.circuitpython.org/en/9.1.x/shared-bindings/support_matrix.html
-
-_asyncio, _bleio, _pixelmap, adafruit_bus_device, adafruit_pixelbuf, alarm, analogio, array, atexit, audiobusio,
-audiocore, audioio, audiomixer, audiomp3, binascii, bitbangio, bitmaptools, board, builtins, builtins.pow3,busdisplay,
-busio, busio.SPI, busio.UART, codeop, collections, countio, digitalio, displayio, epaperdisplay, errno, fontio,
-fourwire, framebufferio, frequencyio, getpass, gifio, i2cdisplaybus, i2ctarget, io, jpegio, json, keypad, 
-keypad.KeyMatrix, keypad.Keys, keypad.ShiftRegisterKeys, locale, math, microcontroller, msgpack, neopixel_write, nvm,
-onewireio, os, os.getenv, ps2io, pulseio, pwmio, rainbowio, random, re, rgbmatrix, rotaryio, rtc, samd, sdcardio, 
-select, storage, struct, supervisor, synthio, sys, terminalio, time, touchio, traceback, usb_cdc, usb_hid, usb_midi,
-vectorio, warnings, watchdog, zlib
-
-Frozen Modules: adafruit_connection_manager, adafruit_esp32spi, adafruit_portalbase, adafruit_requests, neopixel
-'''
-
 from os import getenv
 
 import board
@@ -36,18 +20,18 @@ import rtc
 import asyncio
 
 import microcontroller
-from microcontroller import Pin
+# from microcontroller import Pin
 
 ## Frozen modules
 import adafruit_connection_manager
 import adafruit_requests
 from adafruit_esp32spi import adafruit_esp32spi
-from adafruit_matrixportal.matrix import Matrix
+# from adafruit_matrixportal.matrix import Matrix
 import neopixel
 
 ## Custom modules
 import datetime_util
-import characters
+# import characters
 
 ##******************************************************************************
 ##******************************************************************************
@@ -76,21 +60,21 @@ else:
 def show_boardpins():
     """
     Show all available board pins.
-    
+
     https://learn.adafruit.com/adafruit-matrixportal-m4/circuitpython-pins-and-modules
     """
     '''
     dir(board):
-    ['__class__', '__name__', 'A0', 'A1', 'A2', 'A3', 'A4', 'ACCELEROMETER_INTERRUPT', 'BUTTON_DOWN', 'BUTTON_UP', 
-    'ESP_BUSY', 'ESP_CS', 'ESP_GPIO0', 'ESP_RESET', 'ESP_RTS', 'ESP_RX', 'ESP_TX', 'I2C', 'L', 'LED', 'MISO', 'MOSI', 
-    'MTX_ADDRA', 'MTX_ADDRB', 'MTX_ADDRC', 'MTX_ADDRD', 'MTX_ADDRE', 'MTX_ADDRESS', 'MTX_B1', 'MTX_B2', 'MTX_CLK', 
-    'MTX_COMMON', 'MTX_G1', 'MTX_G2', 'MTX_LAT', 'MTX_OE', 'MTX_R1', 'MTX_R2', 'NEOPIXEL', 'RX', 'SCK', 'SCL', 'SDA', 
+    ['__class__', '__name__', 'A0', 'A1', 'A2', 'A3', 'A4', 'ACCELEROMETER_INTERRUPT', 'BUTTON_DOWN', 'BUTTON_UP',
+    'ESP_BUSY', 'ESP_CS', 'ESP_GPIO0', 'ESP_RESET', 'ESP_RTS', 'ESP_RX', 'ESP_TX', 'I2C', 'L', 'LED', 'MISO', 'MOSI',
+    'MTX_ADDRA', 'MTX_ADDRB', 'MTX_ADDRC', 'MTX_ADDRD', 'MTX_ADDRE', 'MTX_ADDRESS', 'MTX_B1', 'MTX_B2', 'MTX_CLK',
+    'MTX_COMMON', 'MTX_G1', 'MTX_G2', 'MTX_LAT', 'MTX_OE', 'MTX_R1', 'MTX_R2', 'NEOPIXEL', 'RX', 'SCK', 'SCL', 'SDA',
     'SPI', 'STEMMA_I2C', 'TX', 'UART', '__dict__', 'board_id']
 
     dir(microcontroller.pin):
-    ['__class__', 'PA00', 'PA01', 'PA02', 'PA03', 'PA04', 'PA05', 'PA06', 'PA07', 'PA08', 'PA09', 'PA10', 'PA11', 
-    'PA12', 'PA13', 'PA14', 'PA15', 'PA16', 'PA17', 'PA18', 'PA19', 'PA20', 'PA21', 'PA22', 'PA23', 'PA27', 'PA30', 
-    'PA31', 'PB00', 'PB01', 'PB02', 'PB03', 'PB04', 'PB05', 'PB06', 'PB07', 'PB08', 'PB09', 'PB10', 'PB11', 'PB12', 
+    ['__class__', 'PA00', 'PA01', 'PA02', 'PA03', 'PA04', 'PA05', 'PA06', 'PA07', 'PA08', 'PA09', 'PA10', 'PA11',
+    'PA12', 'PA13', 'PA14', 'PA15', 'PA16', 'PA17', 'PA18', 'PA19', 'PA20', 'PA21', 'PA22', 'PA23', 'PA27', 'PA30',
+    'PA31', 'PB00', 'PB01', 'PB02', 'PB03', 'PB04', 'PB05', 'PB06', 'PB07', 'PB08', 'PB09', 'PB10', 'PB11', 'PB12',
     'PB13', 'PB14', 'PB15', 'PB16', 'PB17', 'PB22', 'PB23', 'PB30', 'PB31', '__dict__']
 
     sorted board pins:
@@ -237,11 +221,11 @@ def scan_networks(esp):
 def connect(esp):
     """
     Connect to AP defined in secrets.
-    
+
     Returns
     -------
     * esp.ap_info.ssid
-    * esp.ap_info.rssi 
+    * esp.ap_info.rssi
     * esp.ipv4_address
     """
     ## Get wifi details and more from a settings.toml file
@@ -316,7 +300,7 @@ def sync_time_NTP(ntp):
         # print('<< NTP timestamp:', ntptime.time())
         ## set time
         # ntptime.settime()
-        
+
         ## NOTE: This changes the system time so make sure you aren't assuming that time doesn't jump.
         # print(ntp.datetime)
         rtc.RTC().datetime = ntp.datetime
@@ -349,7 +333,7 @@ def init_sensor():
         i2c_devices = i2c_bus.scan()
         print("\n#### I2C addresses found:")
         print([(device_address, hex(device_address)) for device_address in i2c_devices])
-    finally: 
+    finally:
         ## Unlock the I2C bus
         i2c_bus.unlock()
 
@@ -386,7 +370,7 @@ def read_sensor():
         i2c_bus.writeto(i2c_device, bytearray([mode[1]]))
         time.sleep(mode[-1])
         rx_bytes = bytearray(6)
-        i2c_bus.readfrom_into(i2c_device, rx_bytes)    
+        i2c_bus.readfrom_into(i2c_device, rx_bytes)
         # print('>', rx_bytes, len(rx_bytes))
         t_ticks = rx_bytes[0] * 256 + rx_bytes[1]
         rh_ticks = rx_bytes[3] * 256 + rx_bytes[4]
@@ -395,7 +379,7 @@ def read_sensor():
         if (rh_pRH > 100):
             rh_pRH = 100
         if (rh_pRH < 0):
-            rh_pRH = 0  
+            rh_pRH = 0
         # print('> temperature:', t_degC)
         # print('> humidity:', rh_pRH)
 
@@ -478,7 +462,8 @@ async def _refresh_display(lock):
     """
     while True:
         await lock.acquire()
-        hub75spi.display_data()
+        pass
+        # hub75spi.display_data()
         lock.release()
         await asyncio.sleep(0)
 
@@ -555,7 +540,6 @@ async def main():
     # for _ in range(100):
     #    hub75spi.display_data()
 
-
     ##--------------------------------------------------------------------------
     ## Init networking
     esp, pool, requests = init_wifi()
@@ -578,14 +562,14 @@ async def main():
     asyncio.create_task(_clocktick(lock))
     asyncio.create_task(_set_clock(lock))
     asyncio.create_task(_sync_time_NTP(lock, ntp))
-    
+
     ##--------------------------------------------------------------------------
     ## Init NeoPixel
     # pixels = init_neopixels()
     # asyncio.create_task(_refresh_neopixel(lock, pixels, 0))
-    
+
     ##--------------------------------------------------------------------------
-    ## Init clock face update 
+    ## Init clock face update
     # asyncio.create_task(_refresh_display(lock))
 
     while True:

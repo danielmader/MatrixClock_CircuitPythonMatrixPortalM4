@@ -36,25 +36,25 @@ displayio.release_displays()
 #     clock_pin=board.D13, latch_pin=board.D0, output_enable_pin=board.D1)
 
 rgb_pins = [
-    board.MTX_R1, 
-    board.MTX_G1, 
+    board.MTX_R1,
+    board.MTX_G1,
     board.MTX_B1,
-    board.MTX_R2, 
-    board.MTX_G2, 
+    board.MTX_R2,
+    board.MTX_G2,
     board.MTX_B2,
 ]
 addr_pins = [
-    board.MTX_ADDRA, 
+    board.MTX_ADDRA,
     board.MTX_ADDRB,
     board.MTX_ADDRC,
-    board.MTX_ADDRD, 
+    board.MTX_ADDRD,
 ]
 matrix = rgbmatrix.RGBMatrix(
     width=64, height=32, bit_depth=1,
     rgb_pins=rgb_pins,
     addr_pins=addr_pins,
     clock_pin=board.MTX_CLK,
-    latch_pin=board.MTX_LAT, 
+    latch_pin=board.MTX_LAT,
     output_enable_pin=board.MTX_OE)
 
 # Associate the RGB matrix with a Display so that we can use displayio features
@@ -85,6 +85,7 @@ g.append(line1)
 g.append(line2)
 display.root_group = g
 
+
 # This function will scoot one label a pixel to the left and send it back to
 # the far right if it's gone all the way off screen. This goes in a function
 # because we'll do exactly the same thing with line1 and line2 below.
@@ -94,6 +95,7 @@ def scroll(line):
     if line.x < -line_width:
         line.x = display.width
 
+
 # This function scrolls lines backwards.  Try switching which function is
 # called for line2 below!
 def reverse_scroll(line):
@@ -101,6 +103,7 @@ def reverse_scroll(line):
     line_width = line.bounding_box[2]
     if line.x >= display.width:
         line.x = -line_width
+
 
 # You can add more effects in this loop. For instance, maybe you want to set the
 # color of each label to a different value.

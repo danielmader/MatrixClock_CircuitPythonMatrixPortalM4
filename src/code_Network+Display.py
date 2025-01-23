@@ -14,7 +14,7 @@ https://learn.adafruit.com/rgb-led-matrices-matrix-panels-with-circuitpython?vie
 https://adafruit-playground.com/u/VPTechOps/pages/rgb-matrix-word-clocks
 """
 
-import sys
+# import sys
 import os
 import time
 

@@ -9,8 +9,7 @@ import time
 import board
 import busio
 import displayio
-import terminalio
-import busio
+# import terminalio
 from rtc import RTC
 
 from digitalio import DigitalInOut, Pull
@@ -20,10 +19,10 @@ import adafruit_connection_manager
 
 from adafruit_debouncer import Debouncer
 from adafruit_display_text.label import Label
-import adafruit_imageload
+# import adafruit_imageload
 from adafruit_bitmap_font import bitmap_font
 from adafruit_matrixportal.matrix import Matrix
-from adafruit_matrixportal.network import Network
+# from adafruit_matrixportal.network import Network
 from adafruit_ntp import NTP
 
 from datetime_util import cettime

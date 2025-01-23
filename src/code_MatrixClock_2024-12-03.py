@@ -10,8 +10,7 @@ import board
 import busio
 import displayio
 import terminalio
-import busio
-from rtc import RTC
+# from rtc import RTC
 
 from digitalio import DigitalInOut, Pull
 from adafruit_esp32spi import adafruit_esp32spi
@@ -21,11 +20,11 @@ import adafruit_connection_manager
 from adafruit_matrixportal.matrixportal import MatrixPortal
 from adafruit_debouncer import Debouncer
 from adafruit_display_text.label import Label
-import adafruit_imageload
+# import adafruit_imageload
 from adafruit_bitmap_font import bitmap_font
 from adafruit_matrixportal.matrix import Matrix
-from adafruit_matrixportal.network import Network
-from adafruit_ntp import NTP
+# from adafruit_matrixportal.network import Network
+# from adafruit_ntp import NTP
 
 from datetime_util import cettime
 
@@ -159,7 +158,6 @@ if LEVEL == 0:
 elif LEVEL == 1:
     ## 2) https://docs.circuitpython.org/projects/matrixportal/en/stable/
 
-
     # matrixportal = MatrixPortal(esp=network._wifi, debug=True)
     matrixportal = MatrixPortal(debug=True)
     ## Create a new label with the color and text selected
@@ -177,13 +175,13 @@ elif LEVEL == 1:
     ]
     while True:
         for content in contents:
-                matrixportal.set_text(content['text'])
+            matrixportal.set_text(content['text'])
 
-                ## Set the text color
-                matrixportal.set_text_color(content['color'])
+            ## Set the text color
+            matrixportal.set_text_color(content['color'])
 
-                ## Scroll it
-                matrixportal.scroll_text(SCROLL_DELAY)
+            ## Scroll it
+            matrixportal.scroll_text(SCROLL_DELAY)
         break
 
     display = matrixportal.graphics.display
