@@ -109,6 +109,7 @@ print("## Current RTC time:", rtc.datetime)
 
 ##------------------------------------------------------------------------------
 def sync_time_via_ntp():
+    """Synchronize RTC and ts_clocktick with NTP."""
     global ts_clocktick
     global ts_lastntpsync
     global consecutive_failures
@@ -139,10 +140,7 @@ def sync_time_via_ntp():
 
 ##------------------------------------------------------------------------------
 def reconnect_wifi():
-    """
-    Tries to reconnect to Wi-Fi after an esp.reset().
-    Adjust the logic to match your code (SSID, password, etc.).
-    """
+    """Reconnect to Wi-Fi after an esp.reset()."""
     while not esp.is_connected:
         try:
             esp.connect_AP(CIRCUITPY_WIFI_SSID, CIRCUITPY_WIFI_PASSWORD)
@@ -181,9 +179,7 @@ def update_display(show_colon=False):
 
 ##------------------------------------------------------------------------------
 async def _clocktick(lock):
-    """
-    Scheduler to add one second to the counter.
-    """
+    """Scheduler to add one second to the counter."""
     global ts_clocktick
     while True:
         # await lock.acquire()
@@ -192,11 +188,9 @@ async def _clocktick(lock):
         await asyncio.sleep(1)
 
 
-##==============================================================================
+##------------------------------------------------------------------------------
 def clocktick():
-    """
-    Synchronize the RTC with NTP time.
-    """
+    """Check if NTP sync is due and update the clock display."""
     global ts_lastntpsync
     global ts_clocktick
 
