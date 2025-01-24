@@ -161,10 +161,7 @@ def sync_time_via_ntp():
 
 ##------------------------------------------------------------------------------
 def reconnect_wifi():
-    """
-    Tries to reconnect to Wi-Fi after an esp.reset().
-    Adjust the logic to match your code (SSID, password, etc.).
-    """
+    """Tries to reconnect to Wi-Fi after an esp.reset()."""
     while not esp.is_connected:
         try:
             esp.connect_AP(CIRCUITPY_WIFI_SSID, CIRCUITPY_WIFI_PASSWORD)
@@ -275,14 +272,14 @@ sht40_modes = (
 
 ##------------------------------------------------------------------------------
 def read_sensor():
-    '''
+    """
     Read measurement data from Sensirion SHT40.
 
     Returns
     -------
     * t_degC : float
     * rh_pRH : float
-    '''
+    """
     mode = sht40_modes[1]  # NOHEAT_HIGHPRECISION
     while not i2c_bus.try_lock():
         pass
@@ -347,10 +344,7 @@ group.append(sensor_label)
 
 ##------------------------------------------------------------------------------
 def update_display(*, hours=None, minutes=None, show_colon=False):
-    """
-    Update the clock display with the current time and sensor readings."""
-    # now_localtime = time.localtime()  # UTC
-
+    """Update the clock display with the current time and sensor readings."""
     # now_monotonic = time.monotonic()
     now_time = time.time()
     now_tick = ts_clocktick
@@ -426,9 +420,7 @@ def update_display(*, hours=None, minutes=None, show_colon=False):
 
 ##------------------------------------------------------------------------------
 async def _clocktick(lock):
-    """
-    Scheduler to add one second to the counter.
-    """
+    """Scheduler to add one second to the counter."""
     global ts_clocktick
     while True:
         # await lock.acquire()
@@ -439,9 +431,7 @@ async def _clocktick(lock):
 
 ##------------------------------------------------------------------------------
 def clocktick():
-    """
-    Synchronize the RTC with NTP time.
-    """
+    """Synchronize the RTC with NTP time."""
     global ts_lastntpsync
     global ts_clocktick
 
