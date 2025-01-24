@@ -1,4 +1,3 @@
-# import sys
 import os
 import time
 import asyncio
@@ -9,22 +8,11 @@ import digitalio
 import busio
 from adafruit_esp32spi import adafruit_esp32spi
 
-# import neopixel
-# from adafruit_esp32spi import adafruit_esp32spi_wifimanager
-
 import adafruit_connection_manager
 
 ## NTP & RTC -------------------------------------------------------------------
 import rtc
 import adafruit_ntp
-
-## Display ---------------------------------------------------------------------
-#from adafruit_matrixportal.matrix import Matrix
-#from adafruit_display_text.label import Label
-#from adafruit_bitmap_font import bitmap_font
-#import adafruit_imageload
-#import displayio
-#import terminalio
 
 ## Clock -----------------------------------------------------------------------
 import datetime_util
@@ -165,11 +153,8 @@ def reconnect_wifi():
 
 
 ##------------------------------------------------------------------------------
-def update_display(*, hours=None, minutes=None, show_colon=False):
-    """
-    Update the clock display with the current time and sensor readings."""
-    # now_localtime = time.localtime()  # UTC
-
+def update_display(show_colon=False):
+    """Update the clock strings with the current time. NOTE: `show_colon` not used w/o display."""
     # now_monotonic = time.monotonic()
     now_time = time.time()
     now_tick = ts_clocktick
