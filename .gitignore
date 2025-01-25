@@ -20,9 +20,9 @@ Datenblätter/
 Examples/
 FW_CircuitPython/
 venvCP/
+src/_archive_/
 
 ## Wifi credentials
 creds.py
 secrets.py
 settings.toml
-
