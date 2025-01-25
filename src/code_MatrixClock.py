@@ -377,8 +377,12 @@ def update_display(*, hours=None, minutes=None, show_colon=False):
     if minutes is None:
         minutes = now[4]
     seconds = now[5]
+    if now[6] in [5, 6]:  # Saturday or Sunday
+        wakeup = 8
+    else:
+        wakeup = 7
 
-    if hours >= 20 or hours < 7:
+    if hours >= 20 or hours < wakeup:
         ## Evening hours to morning
         clock_label.font = font_large_night
         clock_label.color = color[1]
@@ -407,15 +411,16 @@ def update_display(*, hours=None, minutes=None, show_colon=False):
         print("## clock_label x: {} y: {}".format(clock_label.x, clock_label.y))
 
     ## Format the sensor string ------------------------------------------------
-    t_degC, rh_pRH = read_sensor()
-    sensor_str = "{:.1f}°  {:.1f}%".format(t_degC, rh_pRH)
-    sensor_label.text = sensor_str
-    bbx, bby, bbwidth, bbh = sensor_label.bounding_box
-    sensor_label.x = round(display.width / 2 - bbwidth / 2)  # centered
-    sensor_label.y = 26
-    if DEBUG:
-        print("## sensor_label bounding box: {},{},{},{}".format(bbx, bby, bbwidth, bbh))
-        print("## sensor_label x: {} y: {}".format(sensor_label.x, sensor_label.y))
+    if seconds % 2 == 0:
+        t_degC, rh_pRH = read_sensor()
+        sensor_str = "{:.1f}°  {:.1f}%".format(t_degC, rh_pRH)
+        sensor_label.text = sensor_str
+        bbx, bby, bbwidth, bbh = sensor_label.bounding_box
+        sensor_label.x = round(display.width / 2 - bbwidth / 2)  # centered
+        sensor_label.y = 26
+        if DEBUG:
+            print("## sensor_label bounding box: {},{},{},{}".format(bbx, bby, bbwidth, bbh))
+            print("## sensor_label x: {} y: {}".format(sensor_label.x, sensor_label.y))
 
 
 ##------------------------------------------------------------------------------
