@@ -5,7 +5,7 @@ MatrixClock - a HUB75 LED matrix clock driven by Adafruit's MaxtrixPortal M4.
 * Temperature/humidity ambient sensor (Sensirion SHT40).
 
 @author: mada
-@version: 2025-01-23
+@version: 2025-01-25
 """
 
 # import sys
@@ -49,8 +49,7 @@ DEBUG = False
 BLINK = True
 ## NTP sync interval
 NTP_INTERVAL = 3600 * 12  # 3600s * 12 = 60min * 12 = 12h
-NTP_INTERVAL = 3600
-NTP_INTERVAL = 25
+NTP_INTERVAL = 3600  # 3600s = 60min = 1h
 ## Last NTP sync
 ts_lastntpsync = None
 ## Clock counter
@@ -122,7 +121,7 @@ print(  "**** NTP & RTC ****")
 print(  "*******************")
 
 pool = adafruit_connection_manager.get_radio_socketpool(esp)
-ntp = NTP(pool, tz_offset=0, cache_seconds=3600, server="pool.ntp.org")
+ntp = NTP(pool, tz_offset=0, cache_seconds=NTP_INTERVAL, server="pool.ntp.org")
 print("## Current NTP time:", ntp.datetime)
 rtc = RTC()
 rtc.datetime = ntp.datetime
@@ -131,7 +130,7 @@ print("## Current RTC time:", rtc.datetime)
 
 ##------------------------------------------------------------------------------
 def sync_time_via_ntp():
-    """Synchronize RTC and ts_clocktick with NTP."""    
+    """Synchronize RTC and ts_clocktick with NTP."""
     global ts_clocktick
     global ts_lastntpsync
     global consecutive_failures
@@ -470,10 +469,9 @@ async def main():
         await asyncio.sleep(1)
 
 
-try:
-    asyncio.run(main())
-finally:
-    ## Clear retained state
-    _ = asyncio.new_event_loop()
-
-print("\n#### All done!")
+# try:
+#     asyncio.run(main())
+# finally:
+#     ## Clear retained state
+#     _ = asyncio.new_event_loop()
+asyncio.run(main())

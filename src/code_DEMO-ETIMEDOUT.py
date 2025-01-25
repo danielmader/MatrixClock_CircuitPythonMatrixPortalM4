@@ -27,8 +27,7 @@ DEBUG = False
 BLINK = True
 ## NTP sync interval
 NTP_INTERVAL = 3600 * 12  # 3600s * 12 = 60min * 12 = 12h
-NTP_INTERVAL = 3600
-NTP_INTERVAL = 25
+NTP_INTERVAL = 3600  # 3600s = 60min = 1h
 ## Last NTP sync
 ts_lastntpsync = None
 ## Clock counter
@@ -100,7 +99,7 @@ print(  "**** NTP & RTC ****")
 print(  "*******************")
 
 pool = adafruit_connection_manager.get_radio_socketpool(esp)
-ntp = adafruit_ntp.NTP(pool, tz_offset=1, cache_seconds=NTP_INTERVAL, server="pool.ntp.org")
+ntp = adafruit_ntp.NTP(pool, tz_offset=0, cache_seconds=NTP_INTERVAL, server="pool.ntp.org")
 print("## Current NTP time:", ntp.datetime)
 rtc = rtc.RTC()
 rtc.datetime = ntp.datetime
@@ -207,28 +206,29 @@ def clocktick():
 
 update_display(show_colon=True)  # display whatever time is on the board
 
-## 1) Run entire clock in a loop
+## 1) Run clock in a loop
 # while True:
 #     clocktick()
 #     time.sleep(1)
 
 
-## 2) Run clocktick in a routine
+## 2) Run clock in a routine
 async def main():
     ## Create the lock instance
     lock = asyncio.Lock()
+
     ## Init co-routines (cooperative tasks) for basic clock function
     asyncio.create_task(_clocktick(lock))
     # asyncio.create_task(_update_clock(lock))
     # asyncio.create_task(_sync_time_NTP(lock, ntp))
+
     while True:
         clocktick()
         await asyncio.sleep(1)
+
 # try:
 #     asyncio.run(main())
 # finally:
 #     ## Clear retained state
 #     _ = asyncio.new_event_loop()
 asyncio.run(main())
-
-print("\n#### All done!")
