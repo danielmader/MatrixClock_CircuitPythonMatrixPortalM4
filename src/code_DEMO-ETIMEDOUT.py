@@ -28,6 +28,7 @@ BLINK = True
 ## NTP sync interval
 NTP_INTERVAL = 3600 * 12  # 3600s * 12 = 60min * 12 = 12h
 NTP_INTERVAL = 3600  # 3600s = 60min = 1h
+NTP_INTERVAL = 60  # 60s = 1min  # stress test
 ## Last NTP sync
 ts_lastntpsync = None
 ## Clock counter
