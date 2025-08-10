@@ -5,7 +5,7 @@ MatrixClock - a HUB75 LED matrix clock driven by Adafruit's MaxtrixPortal M4.
 * Temperature/humidity ambient sensor (Sensirion SHT40).
 
 @author: mada
-@version: 2025-01-25
+@version: 2025-08-10
 """
 
 # import sys
@@ -320,14 +320,16 @@ print(  "**********************")
 
 ## Define fonts
 font_large_day = bitmap_font.load_font("IBMPlexMono-Medium-24_jep.bdf")
+# font_small_day = bitmap_font.load_font("6x10.bdf")  # ugly
+font_small_day = bitmap_font.load_font("helvR10.bdf")
+font_small_night = terminalio.FONT
 font_large_night = terminalio.FONT
-# font_small = terminalio.FONT
-# font_small = bitmap_font.load_font("6x10.bdf")  # ugly
-font_small = bitmap_font.load_font("helvR10.bdf")
+font_small_night = font_small_day
+font_large_night = font_small_day
 
 ## Create labels for the display text
 clock_label = Label(font_large_day)
-sensor_label = Label(font_small)
+sensor_label = Label(font_small_day)
 clock_label.color = color[4]
 sensor_label.color = color[4]
 ## Place the labels
@@ -386,11 +388,13 @@ def update_display(*, hours=None, minutes=None, show_colon=False):
         ## Evening hours to morning
         clock_label.font = font_large_night
         clock_label.color = color[1]
+        sensor_label.font = font_small_night
         sensor_label.color = color[1]
     else:
         ## Daylight hours
         clock_label.font = font_large_day
         clock_label.color = color[3]
+        sensor_label.font = font_small_day
         sensor_label.color = color[3]
 
     if BLINK:
